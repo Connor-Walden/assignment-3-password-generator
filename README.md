@@ -10,7 +10,7 @@ Create a password generator in javascript. During this assignment I want to deve
 ![Screen Shot 2020-12-13 at 3 49 44 pm](https://user-images.githubusercontent.com/20080981/102003837-e4ce2c00-3d5a-11eb-8c28-b630f69b9f70.png)
 
 ## Deployed Site
--------------
+https://connor-walden.github.io/assignment-3-password-generator
 
 ## Built with
 HTML, CSS and javascript... HTML and CSS provided by Trilogy.
