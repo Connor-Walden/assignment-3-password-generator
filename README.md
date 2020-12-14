@@ -13,4 +13,4 @@ Create a password generator in javascript. During this assignment I want to deve
 https://connor-walden.github.io/assignment-3-password-generator
 
 ## Built with
-HTML, CSS and javascript... HTML and CSS provided by Trilogy.
+HTML, CSS and javascript.
