@@ -55,7 +55,7 @@ function promptLength() {
   var lgth = prompt("How many characters in password?");
 
   // If length is valid, continue with password generation, otherwise, alert to the user
-  // that the length is illegal and restart generation.
+  // that the length is illegal and re-prompt.
   if(lgth <= 128 && lgth >= 8) {
     return lgth;
   }
@@ -81,7 +81,7 @@ function promptChars(charset) {
 
   // If at this point chars still equals nothing, the user set all options
   // to false... This is not allowed so now we alert back that it is isn't allowed
-  // and restart the generator.
+  // and re-prompt the user.
   if(chars === "") { 
     alert("You must select at-least ONE option for the generator to work! :(");
     return promptChars(charset);
