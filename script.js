@@ -44,14 +44,6 @@ function generatePassword() {
   // generation.
   var chars = promptChars(charset);
 
-  // If at this point chars still equals nothing, the user set all options
-  // to false... This is not allowed so now we alert back that it is isn't allowed
-  // and restart the generator.
-  if(chars === "") { 
-    alert("You must select at-least ONE option for the generator to work! :(");
-    generatePassword();
-  }
-
   // Generate the password from the allowed categories of characters.
   for (var i = 0, n = chars.length; i < length; ++i) {
     retVal += chars.charAt(Math.floor(Math.random() * n));
@@ -69,7 +61,7 @@ function promptLength() {
   }
   else {
     alert("Password must be between 8 and 128 characters!");
-    generatePassword();  
+    return promptLength();
   }
 }
 
@@ -87,6 +79,14 @@ function promptChars(charset) {
   if(charset["option-numbers"]) chars += charset["numbers"]; 
   if(charset["option-special"]) chars += charset["special"];
 
+  // If at this point chars still equals nothing, the user set all options
+  // to false... This is not allowed so now we alert back that it is isn't allowed
+  // and restart the generator.
+  if(chars === "") { 
+    alert("You must select at-least ONE option for the generator to work! :(");
+    return promptChars(charset);
+  }
+  
   // Return string containing all valid characters according to user options.
   return chars;
 }
