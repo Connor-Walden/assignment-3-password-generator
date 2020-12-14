@@ -16,9 +16,12 @@ function writePassword() {
 }
 
 function generatePassword() {
+  // Initialising variables used in password generation.
   var length = 8;
   var retVal = "";
 
+  // Charset object containing all important data for password generation (all character types
+  // and booleans for what the user wants to use).
   var charset = {
     "option-lowercase": false,
     "option-uppercase": false,
@@ -28,7 +31,7 @@ function generatePassword() {
     "uppercase": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     "numbers": "0123456789",
     // NOTE: space is not included in the special characters list 
-    // as i don't personally think it belongs.
+    // as I don't personally think it belongs.
     "special":  "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
   }
 
@@ -36,8 +39,10 @@ function generatePassword() {
   // it must be between 8 and 128 characters and restart the generator.
   length = promptLength();
 
-  // Prompt user for options for password generation
-  var chars = promptCharset(charset);
+  // Prompt user for options for password generation and return the correct string containing all
+  // characters that are to be used in generation. If no options are selected, restart password
+  // generation.
+  var chars = promptChars(charset);
 
   // If at this point chars still equals nothing, the user set all options
   // to false... This is not allowed so now we alert back that it is isn't allowed
@@ -57,6 +62,8 @@ function generatePassword() {
 function promptLength() {
   var lgth = prompt("How many characters in password?");
 
+  // If length is valid, continue with password generation, otherwise, alert to the user
+  // that the length is illegal and restart generation.
   if(lgth <= 128 && lgth >= 8) {
     return lgth;
   }
@@ -66,7 +73,7 @@ function promptLength() {
   }
 }
 
-function promptCharset(charset) {
+function promptChars(charset) {
   // Ask user what options they want for their password.
   charset["option-lowercase"] = confirm("Would you like the password to include lowercase characters?");
   charset["option-uppercase"] = confirm("Would you like the password to include uppercase characters?");
@@ -80,6 +87,7 @@ function promptCharset(charset) {
   if(charset["option-numbers"]) chars += charset["numbers"]; 
   if(charset["option-special"]) chars += charset["special"];
 
+  // Return string containing all valid characters according to user options.
   return chars;
 }
 
